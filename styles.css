@@ -1,0 +1,72 @@
+body {
+    background-color: #4797f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calcContainer {
+    flex: 1 1 auto;
+    margin: auto;
+    background-color: #a79797;
+    border: 0px 4px 4px 0px solid #857575;
+    border-radius: 15px;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 5px 0px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.calcDisplay,
+.numberPadContainer,
+.operatorContainer {
+    flex: 1 1 auto;
+    margin: auto;
+}
+
+.numberPadContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: auto;
+    width: 700px;
+    padding: 20px;
+}
+
+.numberPad {
+    flex: 1 1 auto;
+    margin: auto;
+    padding: 0px;
+    background-color: #6ccaa3;
+    color: #d4e2e0;
+    text-align: center;
+    border: 0px 2px 2px 0px solid #3f755f;
+}
+
+.clicked {
+    background-color: #679682;
+    transform: scale(0.9);
+    border: none;
+    box-shadow: inset 2px 0px 0px 2px #667971;
+    transition: 0.08s ease;
+}
+
+.operator {
+    flex: 1 1 auto;
+    margin: auto;
+    padding: 0px;
+    background-color: #ebde68;
+    color: #595a51;
+    text-align: center;
+    border: 0px 2px 2px 0px solid #b6ac57;
+}
+
+.clickedOperator {
+    background-color: #dbd38a;
+    transform: scale(0.9);
+    border: none;
+    box-shadow: inset 2px 0px 0px 2px #857f4b;
+    transition: 0.08s ease;
+}
+
