@@ -80,9 +80,14 @@ function findKey(e) {
 
 function findPressedKey(e) {
     //console.log(e);
-    let pressedKey = document.querySelector(`div[data-key="${e.key}"`);
-    //let displayText = document.createElement("p");
-    //displayArea.appendChild(displayText);
-    //displayText.textContent = pressedKey;
-    console.log(pressedKey.dataset.key);
+    try {
+        let pressedKey = document.querySelector(`div[data-key="${e.key}"`);
+        //let displayText = document.createElement("p");
+        //displayArea.appendChild(displayText);
+        //displayText.textContent = pressedKey;
+        console.log(pressedKey.dataset.key);
+    }
+    catch(TypeError) {
+        return;
+    };
 };
