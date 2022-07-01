@@ -27,9 +27,10 @@ body {
 }
 
 .titleContainer h1 {
-    font-size: 34px;
+    font-size: 40px;
     font-style: italic;
     font-family:'Courier New', Courier, monospace, sans-serif;
+    text-shadow: 10px 10px 5px #3d3838;
 }
 
 .calcContainer {
@@ -88,6 +89,8 @@ body {
     background-color: #b69696;
     margin-left: 400px;
     margin-right: 400px;
+    border-radius: 5px;
+    box-shadow: inset 5px 5px 2px #857272;
 }
 
 .numberPad {
