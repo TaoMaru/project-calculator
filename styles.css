@@ -32,6 +32,7 @@ body {
 }
 
 .calcDisplay {
+    margin-top: 30px;
     width: 300px;
     height: 100px;
     border: 5px solid #757592;
@@ -66,7 +67,7 @@ body {
     font-size: 30px;
 }
 
-.clicked {
+.clickedNum {
     background-color: #679682;
     transform: scale(0.9);
     border: none;
