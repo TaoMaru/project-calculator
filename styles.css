@@ -9,29 +9,47 @@ body {
     flex: 1 1 auto;
     margin: auto;
     background-color: #a79797;
-    border: 0px 4px 4px 0px solid #857575;
+    border-right: 10px solid #857575;
+    border-bottom: 10px solid #857575;
     border-radius: 15px;
     box-sizing: border-box;
-    box-shadow: 0px 5px 5px 0px;
+    box-shadow: 15px 15px 10px 0px;
     display: flex;
     flex-direction: column;
     text-align: center;
+    width: 50%;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .calcDisplay,
 .numberPadContainer,
-.operatorContainer {
+.operatorContainer,
+.paddingDiv {
     flex: 1 1 auto;
     margin: auto;
+}
+
+.calcDisplay {
+    width: 300px;
+    height: 100px;
+    border: 5px solid #757592;
+    background-color: #ababd8;
+    text-align: right;
+    font-size: 30px;
 }
 
 .numberPadContainer {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: auto;
-    width: 700px;
+    height: 300px;
+    width: 300px;
     padding: 20px;
+    background-color: #b69696;
+    margin-left: 400px;
+    margin-right: 400px;
 }
 
 .numberPad {
@@ -41,7 +59,11 @@ body {
     background-color: #6ccaa3;
     color: #d4e2e0;
     text-align: center;
-    border: 0px 2px 2px 0px solid #3f755f;
+    border-right: 5px solid #3f755f;
+    border-bottom: 5px solid #3f755f;
+    height: 60px;
+    width: 60px;
+    font-size: 30px;
 }
 
 .clicked {
@@ -52,6 +74,14 @@ body {
     transition: 0.08s ease;
 }
 
+.operatorContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 200px;
+}
+
 .operator {
     flex: 1 1 auto;
     margin: auto;
@@ -59,7 +89,11 @@ body {
     background-color: #ebde68;
     color: #595a51;
     text-align: center;
-    border: 0px 2px 2px 0px solid #b6ac57;
+    border-right: 5px solid #b6ac57;
+    border-bottom: 5px solid #b6ac57;
+    height: 60px;
+    width: 70px;
+    font-size: 30px;
 }
 
 .clickedOperator {
