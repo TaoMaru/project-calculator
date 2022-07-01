@@ -1,14 +1,41 @@
 body {
     background-color: #4797f1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.mainContentFlexContainer {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.titleContainer {
+    flex: 1 1 auto;
+    text-align: center;
+    width: 100%;
+    margin: 30px;
+    margin-bottom: 10px;
+    padding: 20px;
+    color: #d4e2f1fa;
+    display: inline-block;
+}
+
+.titleContainer h1 {
+    font-size: 34px;
+    font-style: italic;
+    font-family:'Courier New', Courier, monospace, sans-serif;
 }
 
 .calcContainer {
     flex: 1 1 auto;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 0px;
     background-color: #a79797;
     border-right: 10px solid #857575;
     border-bottom: 10px solid #857575;
@@ -18,7 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 30%;
+    width: 70%;
     height: auto;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +61,7 @@ body {
 }
 
 .paddingDiv {
-    margin-top: 100px;
+    margin-top: 0px;
 }
 
 .calcDisplay {
@@ -45,6 +72,8 @@ body {
     background-color: #ababd8;
     text-align: right;
     font-size: 30px;
+    box-shadow: inset 8px 8px 3px 0px #66667c;
+    border-radius: 5px;
 }
 
 .numberPadContainer {
@@ -55,6 +84,7 @@ body {
     height: 300px;
     width: 300px;
     padding: 20px;
+    padding-bottom: 40px;
     background-color: #b69696;
     margin-left: 400px;
     margin-right: 400px;
@@ -73,6 +103,7 @@ body {
     height: 50px;
     width: 60px;
     font-size: 30px;
+    border-radius: 10px;
 }
 
 .clickedNum {
@@ -105,6 +136,7 @@ body {
     height: 50px;
     width: 70px;
     font-size: 30px;
+    border-radius: 10px;
 }
 
 .clickedOperator {
