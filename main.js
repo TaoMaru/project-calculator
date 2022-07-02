@@ -106,7 +106,12 @@ function findKey(e) {
     if( e.target.dataset.key !== undefined ) {
         keyValue = e.target.dataset.key;
         if(keyValue !== "Escape") {
-            updateCalcDisplay();
+            if( keyValue === "Backspace" ) {
+                undoLastEntry();
+            }
+            else {
+                updateCalcDisplay();
+            }
         }
         else {
             clearCalcDisplay();
@@ -124,6 +129,9 @@ function findPressedKey(e) {
             pressedKey = clearKey;
             keyValue = pressedKey.dataset.key;
             clearCalcDisplay();
+        }
+        else if( e.key === "Backspace" ) {
+            undoLastEntry();
         }
         else {
             updateCalcDisplay();
@@ -183,4 +191,17 @@ function clearCalcDisplay() {
             opBtn.classList.remove("clickedNum");
         }
     };
+};
+
+//Remove last input/char from display & running input:
+function undoLastEntry() {
+    let currentText = displayText.textContent.split("");
+    console.log(currentText);
+    currentText.pop();
+    console.log(currentText);
+    displayText.textContent = currentText.join("");
+    let currentComputingInput = computingInput.split("");
+    console.log(currentComputingInput);
+    currentComputingInput.pop();
+    computingInput = currentComputingInput.join("");
 };
