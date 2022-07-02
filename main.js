@@ -178,4 +178,9 @@ function clearCalcDisplay() {
     displayText.textContent = "";
     computingInput = "";
     computingObj = {};
-}
+    for( opBtn of operatorBtns) {
+        if( opBtn.classList.contains("clickedNum") ) {
+            opBtn.classList.remove("clickedNum");
+        }
+    };
+};
