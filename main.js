@@ -85,6 +85,7 @@ window.addEventListener( "keydown", findPressedKey);
 
 let pressedKey;
 let enterKey;
+let clearKey;
 let keyValue;
 
 let computingObj = {};
@@ -104,7 +105,12 @@ let result;
 function findKey(e) {
     if( e.target.dataset.key !== undefined ) {
         keyValue = e.target.dataset.key;
-        updateCalcDisplay();
+        if(keyValue !== "Escape") {
+            updateCalcDisplay();
+        }
+        else {
+            clearCalcDisplay();
+        }
     };
 };
 
@@ -113,7 +119,15 @@ function findPressedKey(e) {
         pressedKey = document.querySelector(`div[data-key="${e.key}"`);
         pressedKey.classList.add("clickedNum");
         keyValue = pressedKey.dataset.key;
-        updateCalcDisplay();
+        clearKey = document.querySelector(".clear");
+        if( e.key === "Escape") {
+            pressedKey = clearKey;
+            keyValue = pressedKey.dataset.key;
+            clearCalcDisplay();
+        }
+        else {
+            updateCalcDisplay();
+        }
     }
     catch(TypeError) {
         enterKey = document.querySelector(".equals");
@@ -146,7 +160,6 @@ function updateCalcDisplay() {
     }
     else {
         console.log(keyValue);
-        displayText.textContent = "calculating...";
         let inputToCalc = computingInput.split(newOperator);
         computingObj = makeOperation(parseInt(inputToCalc[0]), 
                         newOperator, parseInt(inputToCalc[1]) );
@@ -159,3 +172,10 @@ function updateCalcDisplay() {
 function updateComputingInput() {
     computingInput += keyValue;
 };
+
+//Clear calc obj and calc display:
+function clearCalcDisplay() {
+    displayText.textContent = "";
+    computingInput = "";
+    computingObj = {};
+}
