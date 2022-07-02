@@ -169,7 +169,12 @@ function updateCalcDisplay() {
                         newOperator, parseFloat(inputToCalc[1]) );
         
         result = Math.round(operate(computingObj) *100) / 100;
-        displayText.textContent = result;
+        if( isNaN(result) ) {
+            displayText.textContent = "Cannot compute...";
+        }
+        else {
+            displayText.textContent = result;
+        }
     };
 };
 
