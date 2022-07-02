@@ -1,3 +1,4 @@
+//Style event listeners & functions:
 const numberBtns = document.querySelectorAll(".numberPad");
 for( let numBtn of numberBtns) {
     numBtn.addEventListener("click", addNumClickStyle);
@@ -86,7 +87,7 @@ let pressedKey;
 let enterKey;
 let keyValue;
 
-let computingInput = {};
+let computingObj = {};
 
 function makeOperation(firstNum, operator, secondNum) {
     return {
@@ -96,11 +97,13 @@ function makeOperation(firstNum, operator, secondNum) {
     };
 };
 
-computingInput = makeOperation(123, '+', 123);
+let computingInput = "";
 
-console.log(computingInput);
+computingObj = makeOperation(123, '+', 123);
 
-let result = operate(computingInput);
+console.log(computingObj);
+
+let result = operate(computingObj);
 console.log(result);
 
 function findKey(e) {
@@ -127,17 +130,28 @@ function findPressedKey(e) {
     };
 };
 
+let newOperator = "";
+
 function updateCalcDisplay() {
     if( keyValue != '=' ) {
         if( keyValue === "+" || keyValue === "-" || 
                 keyValue === "*" || keyValue === "/") {
             displayText.textContent = "";
+            newOperator = keyValue;
         }
         else {
             displayText.textContent += keyValue;
         }
+        updateComputingInput();
     }
     else {
         displayText.textContent = "calculating...";
+        let inputToCalc = computingInput.split(newOperator);
+        makeOperation(inputToCalc[0], newOperator, inputToCalc[1]);
+        console.log(computingObj);
     };
+};
+
+function updateComputingInput() {
+    computingInput += keyValue;
 };
