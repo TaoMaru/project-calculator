@@ -99,12 +99,13 @@ function makeOperation(firstNum, operator, secondNum) {
 
 let computingInput = "";
 
-computingObj = makeOperation(123, '+', 123);
+//computingObj = makeOperation(123, '+', 123);
 
-console.log(computingObj);
+//console.log(computingObj);
 
-let result = operate(computingObj);
-console.log(result);
+//let result = operate(computingObj);
+//console.log(result);
+let result;
 
 function findKey(e) {
     if( e.target.dataset.key !== undefined ) {
@@ -138,17 +139,24 @@ function updateCalcDisplay() {
                 keyValue === "*" || keyValue === "/") {
             displayText.textContent = "";
             newOperator = keyValue;
+            console.log(newOperator);
         }
         else {
             displayText.textContent += keyValue;
+            console.log(keyValue);
         }
         updateComputingInput();
+        console.log(computingInput);
     }
     else {
+        console.log(keyValue);
         displayText.textContent = "calculating...";
         let inputToCalc = computingInput.split(newOperator);
-        makeOperation(inputToCalc[0], newOperator, inputToCalc[1]);
+        computingObj = makeOperation(parseInt(inputToCalc[0]), 
+                        newOperator, parseInt(inputToCalc[1]) );
         console.log(computingObj);
+        result = Math.round(operate(computingObj) *100) / 100;
+        displayText.textContent = result;
     };
 };
 
