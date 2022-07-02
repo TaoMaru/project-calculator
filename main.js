@@ -161,8 +161,8 @@ function updateCalcDisplay() {
     else {
         console.log(keyValue);
         let inputToCalc = computingInput.split(newOperator);
-        computingObj = makeOperation(parseInt(inputToCalc[0]), 
-                        newOperator, parseInt(inputToCalc[1]) );
+        computingObj = makeOperation(parseFloat(inputToCalc[0]), 
+                        newOperator, parseFloat(inputToCalc[1]) );
         console.log(computingObj);
         result = Math.round(operate(computingObj) *100) / 100;
         displayText.textContent = result;
