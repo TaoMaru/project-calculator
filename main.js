@@ -99,12 +99,6 @@ function makeOperation(firstNum, operator, secondNum) {
 
 let computingInput = "";
 
-//computingObj = makeOperation(123, '+', 123);
-
-//console.log(computingObj);
-
-//let result = operate(computingObj);
-//console.log(result);
 let result;
 
 function findKey(e) {
@@ -117,6 +111,7 @@ function findKey(e) {
 function findPressedKey(e) {
     try {
         pressedKey = document.querySelector(`div[data-key="${e.key}"`);
+        pressedKey.classList.add("clickedNum");
         keyValue = pressedKey.dataset.key;
         updateCalcDisplay();
     }
@@ -133,6 +128,7 @@ function findPressedKey(e) {
 
 let newOperator = "";
 
+//update calc display & perform calculation:
 function updateCalcDisplay() {
     if( keyValue != '=' ) {
         if( keyValue === "+" || keyValue === "-" || 
