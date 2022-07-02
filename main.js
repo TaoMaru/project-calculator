@@ -71,28 +71,41 @@ operatorPad.addEventListener("click", findKey);
 
 const displayArea = document.querySelector(".calcDisplay");
 
+let displayText = document.createElement("p");
+displayArea.appendChild(displayText);
+
 window.addEventListener( "keydown", findPressedKey);
 
+let pressedKey;
+let enterKey;
+let keyValue;
+
 function findKey(e) {
-    //console.log(e.target.attributes["data-key"]);
-    console.log(e.target.dataset.key);
+    if( e.target.dataset.key !== undefined ) {
+        keyValue = e.target.dataset.key;
+        updateCalcDisplay();
+    };
 };
 
 function findPressedKey(e) {
-    //console.log(e);
     try {
-        let pressedKey = document.querySelector(`div[data-key="${e.key}"`);
-        //let displayText = document.createElement("p");
-        //displayArea.appendChild(displayText);
-        //displayText.textContent = pressedKey;
-        console.log(pressedKey.dataset.key);
+        pressedKey = document.querySelector(`div[data-key="${e.key}"`);
+        keyValue = pressedKey.dataset.key;
+        updateCalcDisplay();
     }
     catch(TypeError) {
-        let enterKey = document.querySelector(".equals");
+        enterKey = document.querySelector(".equals");
         if( e.key === "Enter") {
             pressedKey = enterKey;
-            console.log(pressedKey.dataset.key);
+            keyValue = pressedKey.dataset.key;
+            updateCalcDisplay();
         }
         return;
+    };
+};
+
+function updateCalcDisplay() {
+    if( keyValue != '=' ) {
+        displayText.textContent += keyValue;
     };
 };
