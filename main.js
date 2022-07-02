@@ -47,20 +47,26 @@ const divide = function(num1, num2) {
     return quotient;
 };
 
-/*
-const operate = function(num1, num2, operation) {
-    switch(operation) {
-        case "+" : return add(num1, num2);
+
+const operate = function(computingObj) {
+    let number1 = computingObj.firstNum;
+    let number2 = computingObj.secondNum;
+    switch(computingObj.operator) {
+        case "+" : 
+            return add(number1, number2);
             break;
-        case "-" : return subtract(num1, num2);
+        case "-" : 
+            return subtract(number1, number2);
             break;
-        case "*" : return multiply(num1, num2);
+        case "*" : 
+            return multiply(number1, number2);
             break;
-        case "/" : return divide(num1, num2);
+        case "/" : 
+            return divide(number1, number2);
             break;
-    }
+    };
 };
-*/
+
 
 //Operation variables, event listeners:
 const numPad = document.querySelector(".numberPadContainer");
@@ -79,6 +85,23 @@ window.addEventListener( "keydown", findPressedKey);
 let pressedKey;
 let enterKey;
 let keyValue;
+
+let computingInput = {};
+
+function makeOperation(firstNum, operator, secondNum) {
+    return {
+        firstNum : firstNum,
+        operator : operator,
+        secondNum : secondNum,
+    };
+};
+
+computingInput = makeOperation(123, '+', 123);
+
+console.log(computingInput);
+
+let result = operate(computingInput);
+console.log(result);
 
 function findKey(e) {
     if( e.target.dataset.key !== undefined ) {
@@ -106,6 +129,15 @@ function findPressedKey(e) {
 
 function updateCalcDisplay() {
     if( keyValue != '=' ) {
-        displayText.textContent += keyValue;
+        if( keyValue === "+" || keyValue === "-" || 
+                keyValue === "*" || keyValue === "/") {
+            displayText.textContent = "";
+        }
+        else {
+            displayText.textContent += keyValue;
+        }
+    }
+    else {
+        displayText.textContent = "calculating...";
     };
 };
