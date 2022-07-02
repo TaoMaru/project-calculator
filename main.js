@@ -88,6 +88,11 @@ function findPressedKey(e) {
         console.log(pressedKey.dataset.key);
     }
     catch(TypeError) {
+        let enterKey = document.querySelector(".equals");
+        if( e.key === "Enter") {
+            pressedKey = enterKey;
+            console.log(pressedKey.dataset.key);
+        }
         return;
     };
 };
