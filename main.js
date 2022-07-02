@@ -157,21 +157,17 @@ function updateCalcDisplay() {
                 keyValue === "*" || keyValue === "/") {
             displayText.textContent = "";
             newOperator = keyValue;
-            console.log(newOperator);
         }
         else {
             displayText.textContent += keyValue;
-            console.log(keyValue);
         }
         updateComputingInput();
-        console.log(computingInput);
     }
     else {
-        console.log(keyValue);
         let inputToCalc = computingInput.split(newOperator);
         computingObj = makeOperation(parseFloat(inputToCalc[0]), 
                         newOperator, parseFloat(inputToCalc[1]) );
-        console.log(computingObj);
+        
         result = Math.round(operate(computingObj) *100) / 100;
         displayText.textContent = result;
     };
@@ -196,12 +192,10 @@ function clearCalcDisplay() {
 //Remove last input/char from display & running input:
 function undoLastEntry() {
     let currentText = displayText.textContent.split("");
-    console.log(currentText);
     currentText.pop();
-    console.log(currentText);
     displayText.textContent = currentText.join("");
+
     let currentComputingInput = computingInput.split("");
-    console.log(currentComputingInput);
     currentComputingInput.pop();
     computingInput = currentComputingInput.join("");
 };
