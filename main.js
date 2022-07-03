@@ -207,11 +207,7 @@ function updateCalcDisplay() {
         updateComputingInput();
     }
     else {
-        let inputToCalc = computingInput.split(newOperator);
-        computingObj = makeOperation(parseFloat(inputToCalc[0]), 
-                        newOperator, parseFloat(inputToCalc[1]) );
-        
-        result = Math.round(operate(computingObj) *100) / 100;
+        result = Math.round(convertToOperation(computingInput) * 100) / 100;
         if( isNaN(result) ) {
             displayText.textContent = "Cannot compute...";
         }
