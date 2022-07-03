@@ -102,6 +102,43 @@ let computingInput = "";
 
 let result;
 
+const operatorList = "+-*/";
+
+function convertToOperation(inputStr) {
+    let workingInput = inputStr.split("");
+    let operatorIndex = 0;
+    let workingOperator;
+    let nextOperator;
+    let runningTotal = 0;
+    let firstOperand = parseFloat(inputStr);
+    do {
+        workingOperator = workingInput.find(e => operatorList.includes(e));
+        console.log(workingOperator);
+        operatorIndex = workingInput.indexOf(workingOperator);
+        workingInput.splice(0,operatorIndex + 1);
+        console.log(workingInput);
+        let newStr = workingInput.join("");
+        console.log(firstOperand);
+        nextOperator = workingInput.find(e => operatorList.includes(e));
+        console.log(nextOperator);
+        let nextOperand = parseFloat(newStr);
+        console.log(nextOperand);
+        computingObj = makeOperation(firstOperand, workingOperator, nextOperand);
+        console.log(computingObj);
+        runningTotal = operate(computingObj);
+        firstOperand = runningTotal;
+        console.log(runningTotal);
+    }
+    while(nextOperator !== undefined);
+    return runningTotal;
+};
+
+convertToOperation("123+123");
+convertToOperation("123+123-123");
+convertToOperation("12+7-5*3");
+
+
+//Find clicked or pressed key & get keyCode:
 function findKey(e) {
     if( e.target.dataset.key !== undefined ) {
         keyValue = e.target.dataset.key;
