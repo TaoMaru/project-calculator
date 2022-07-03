@@ -27,6 +27,7 @@ function removeOpClickStyle(e) {
     e.target.classList.remove("clickedOperator");
 }
 
+
 //Calculator functions:
 const add = function(num1, num2) {
     let sum = num1 + num2;
@@ -78,6 +79,8 @@ operatorPad.addEventListener("click", findKey);
 
 const displayArea = document.querySelector(".calcDisplay");
 
+//displayArea.classList.remove("gifContainer");
+
 let displayText = document.createElement("p");
 displayArea.appendChild(displayText);
 
@@ -104,6 +107,8 @@ let result;
 
 const operatorList = "+-*/";
 
+// Compute received input 2 operands at a time,
+//keep running total, return final result
 function convertToOperation(inputStr) {
     let workingInput = inputStr.split("");
     let operatorIndex = 0;
@@ -133,9 +138,13 @@ function convertToOperation(inputStr) {
     return runningTotal;
 };
 
-convertToOperation("123+123");
-convertToOperation("123+123-123");
-convertToOperation("12+7-5*3");
+function isDividingByZero(str) {
+    return str.includes("/0");
+};
+
+//convertToOperation("123+123");
+//convertToOperation("123+123-123");
+//convertToOperation("12+7-5*3");
 
 
 //Find clicked or pressed key & get keyCode:
@@ -164,6 +173,7 @@ function findPressedKey(e) {
         }
         if(pressedKey.classList.contains("operator")) {
             pressedKey.classList.add("clickedOperator");
+            pressedKey.addEventListener("transitionend", removeOpClickStyle);
         }
         keyValue = pressedKey.dataset.key;
         clearKey = document.querySelector(".clear");
@@ -184,6 +194,7 @@ function findPressedKey(e) {
         if( e.key === "Enter") {
             pressedKey = enterKey;
             pressedKey.classList.add("clickedOperator");
+            //pressedKey.addEventListener("transitionend", removeOpClickStyle);
             keyValue = pressedKey.dataset.key;
             updateCalcDisplay();
         }
@@ -207,6 +218,11 @@ function updateCalcDisplay() {
         updateComputingInput();
     }
     else {
+        if( isDividingByZero(computingInput) ) {
+            displayArea.classList.add("gifContainer");
+            displayText.textContent = "";
+            return;
+        }
         result = Math.round(convertToOperation(computingInput) * 100) / 100;
         if( isNaN(result) ) {
             displayText.textContent = "Cannot compute...";
@@ -231,6 +247,9 @@ function clearCalcDisplay() {
             opBtn.classList.remove("clickedOperator");
         }
     };
+    if( displayArea.classList.contains("gifContainer") ) {
+        displayArea.classList.remove("gifContainer");
+    }
 };
 
 //Remove last input/char from display & running input:

@@ -151,3 +151,6 @@ body {
     transition: 0.08s ease;
 }
 
+.gifContainer {
+    background: url("https://media.giphy.com/media/c7PcKQlOqZ8Ws/giphy.gif") 50% 0 no-repeat;
+}
