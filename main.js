@@ -8,7 +8,7 @@ for( let numBtn of numberBtns) {
 const operatorBtns = document.querySelectorAll(".operator");
 for( let opBtn of operatorBtns ) {
     opBtn.addEventListener("click", addOpClickStyle);
-    opBtn.addEventListener("transitionend", removeOpClickStyle);
+    //opBtn.addEventListener("transitionend", removeOpClickStyle);
 };
 
 function addNumClickStyle(e) {
@@ -122,7 +122,12 @@ function findKey(e) {
 function findPressedKey(e) {
     try {
         pressedKey = document.querySelector(`div[data-key="${e.key}"`);
-        pressedKey.classList.add("clickedNum");
+        if(pressedKey.classList.contains("numberPad")) {
+            pressedKey.classList.add("clickedNum");
+        }
+        if(pressedKey.classList.contains("operator")) {
+            pressedKey.classList.add("clickedOperator");
+        }
         keyValue = pressedKey.dataset.key;
         clearKey = document.querySelector(".clear");
         if( e.key === "Escape") {
@@ -141,6 +146,7 @@ function findPressedKey(e) {
         enterKey = document.querySelector(".equals");
         if( e.key === "Enter") {
             pressedKey = enterKey;
+            pressedKey.classList.add("clickedOperator");
             keyValue = pressedKey.dataset.key;
             updateCalcDisplay();
         }
@@ -188,8 +194,8 @@ function clearCalcDisplay() {
     computingInput = "";
     computingObj = {};
     for( opBtn of operatorBtns) {
-        if( opBtn.classList.contains("clickedNum") ) {
-            opBtn.classList.remove("clickedNum");
+        if( opBtn.classList.contains("clickedOperator") ) {
+            opBtn.classList.remove("clickedOperator");
         }
     };
 };
