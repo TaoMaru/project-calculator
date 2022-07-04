@@ -154,3 +154,9 @@ body {
 .gifContainer {
     background: url("https://media.giphy.com/media/c7PcKQlOqZ8Ws/giphy.gif") 50% 0 no-repeat;
 }
+
+.transparentDiv {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
