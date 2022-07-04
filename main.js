@@ -79,7 +79,7 @@ operatorPad.addEventListener("click", findKey);
 
 const displayArea = document.querySelector(".calcDisplay");
 
-//displayArea.classList.remove("gifContainer");
+const xFilesTheme = document.querySelector("audio");
 
 let displayText = document.createElement("p");
 displayArea.appendChild(displayText);
@@ -219,6 +219,8 @@ function updateCalcDisplay() {
     }
     else {
         if( isDividingByZero(computingInput) ) {
+            xFilesTheme.currentTime = 0.5;
+            xFilesTheme.play();
             displayArea.classList.add("gifContainer");
             displayText.textContent = "";
             return;
@@ -250,6 +252,7 @@ function clearCalcDisplay() {
     if( displayArea.classList.contains("gifContainer") ) {
         displayArea.classList.remove("gifContainer");
     }
+    xFilesTheme.pause();
 };
 
 //Remove last input/char from display & running input:
